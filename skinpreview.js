@@ -1,5 +1,6 @@
 /*
 	A canvas Minecraft skin renderer
+	Project link: https://github.com/Hacksore/skinpreview.js
 */
 function SkinPreview(options) {
 	var self = this;
