@@ -6,29 +6,42 @@
 
 	<title>SkinPreview</title>
 	<style>
-		html,body{
-			margin: 0;
-			padding: 0;
-		}
+	
 		#wrapper{
 			width: 1000px;
-			margin: 24px auto 0 auto;
+			margin: 24px auto 48px auto;
 
 		}
 
-		.skin{
+		.skins{
 			float: left;
 			margin: 6px 10px 6px 10px;
 		}
-		
-		.search-controls{
+			
+		.cape-skin{
 			display: inline-block;
-			//margin: 26px 0px 0px 0px;
-		}
-		.search-controls #search{			
-			margin: 12px 0px 0px 0px;
+			margin: 6px 10px 6px 10px;
 		}
 		
+		.info .header{
+			padding: 0px 0px 4px 6px;
+			margin: 0px 0px 14px 0px;
+			color: #fff;
+			background: #303030;
+		}
+
+		.info{
+			max-width: 520px;
+			background: #f7f7f7;
+			max-height: 340px;
+			padding: 0px 0px 6px 0px;
+			margin: 16px auto 16px auto;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;			
+			border: 1px solid #6d6d6d;
+			text-align: center;
+		}
 		.clearfix{ clear: both; }
 	</style>
 </head>
@@ -37,21 +50,46 @@
 
 
 <div id="wrapper">
-	<h1>Multiple skins</h1>
-	<div id="multiple"></div>
 	
+	<div class="info">
+		<h1 class="header">Multiple skins</h1>
+		<div class="skins" data-player="Hacksore"></div>
+		<div class="skins" data-player="Technoash"></div>
+		<div class="skins" data-player="Notch"></div>
+		<div class="skins" data-player="jeb_"></div>
+		<div class="skins" data-player="mollstam"></div>
+		<div class="skins" data-player="Herobrine"></div>
 
-	<div class="search-controls">	
-		
-		<h1>Search</h1>
-		<input type="text" class="skin-input" placeholder="Username"/>	
-		<input type="button" class="btn btn-primary btn-md skin-set" value="Go"/>
-		<div id="search"></div>				
-	
+		<div class="clearfix"></div>
 	</div>
 	
-	<h1>Scaling</h1>
-	<div id="scale"></div>
+	
+	
+	
+	<div class="info">
+		<h1 class="header">Scaling</h1>
+		<div class="scale-skin" data-player="jeb_"></div>
+	</div>
+
+	
+	<div class="info">
+		<h1 class="header">Head</h1>
+		<div class="head-skin" data-player="Hacksore"></div>
+	</div>	
+
+	
+	
+	<div class="info">
+		<h1 class="header">Capes</h1>
+		<div class="cape-skin" data-player="Hacksore"></div>
+		<div class="cape-skin" data-player="Hack"></div>
+		<div class="cape-skin" data-player="SethBling"></div>
+		<div class="cape-skin" data-player="Notch"></div>
+
+		<div class="clearfix"></div>
+	</div>
+
+	
 	
 </div>
 
@@ -60,106 +98,17 @@
 <script type="text/javascript" src="skinpreview.js"></script>
 <script>
 $(window).bind("load", function() {
-	var skins = [
-		"Hacksore",
-		"hack00x",
-		"hack123",
-		"HACK3R35",
-		"Hack94",
-		"Hackachi",
-		"hackanto",
-		"HackBug",
-		"hackcom",
-		"hackdick",
-		"Hacke100",
-		"Hacke200",
-		"Hacke2000",
-		"Hacke99",
-		"Hackebein",
-		"HackeMessa",
-		"Hackenberga",
-		"hackensa17pe",
-		"Hacker02",
-		"Hacker13",
-		"Tech",
-		"tech10",
-		"tech15",
-		"Tech1ZX",
-		"G00B0X",
-		"G00dGuyGr3g",
-		"G00DLiiKE",
-		"G00gle_",
-		"g00gly0eyes",
-		"G00STH",
-		"g00tch",
-		"G01DM3D1C",
-		"G02",
-		"G0blinas",
-		"G0BLIZ3K",
-		"g0dh4nd",
-		"g0dl0l",
-		"G0DL1K3DW4RF",
-		"G0DL1K3P4P4",
-		"g0dlike97",
-		"g0dsd0g",
-		"G0DSR3GR3T",
-		"G0DTHEEALMIGHTY",
-		"g0dy69"
-	]
-	for(var i=0; i<skins.length; i++){
-		var p = new SkinPreview({
-			cape: true,
-			scale: 4,
-			skin: skins[i],
-			prefix: "<a href='http://mcss.me/{:username}' class='skin'>",
-			suffix: "</a>",
-			div: "multiple",
-			className: ""
-		});
-	}
 	
-		
-	var search = new SkinPreview({
-		cape: true,
-		scale: 3,
-		skin: "Hacksore",
-		div: "search",
-		prefix: "<a href='{:username}'>",
-		suffix: "</a>",
-		className: ""
-	});
 	
-	$(".skin-set").click(function(){
-		setSkin();
-	});	
+	$(".skins").skinPreview();
+	
+	$(".scale-skin").skinPreview({scale: 8});
 
-	$(".skin-input").keydown(function(e){	
-		if(e.keyCode == 13){
-			setSkin();
-			$(".skin-input").val("");		
-		}	
-	});	
-	
-	function setSkin(){		
-		var v = $(".skin-input").val();	
-		$.get("https://hacksore.com/api/get/"+v, function(data){
-			$("#skin-response").html(JSON.stringify(data, undefined, 4));
-			search.setSkin(data.username);	
-			$(".skin-input").val("");					
-		});
-	}
-	
-	var scale = new SkinPreview({
-		cape: true,
-		scale: 20,
-		skin: "Hacksore",
-		div: "scale",
-		prefix: "<a href='{:username}'>",
-		suffix: "</a>",
-		className: ""
-	});
-		
+	$(".head-skin").skinPreview({scale: 18, head: true});
 
+	$(".cape-skin").skinPreview({scale: 6, cape: true});
+
+	
 });
 </script>
 
