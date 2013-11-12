@@ -84,7 +84,16 @@
 		this.setSkin = function(user){	
 			capeloaded = false;
 			skinImage = new Image();
-			skinImage.src = "https://s3.amazonaws.com/MinecraftSkins/" + user+ ".png";
+		
+			if(options.imagePath != null){
+				skinImage.src = options.imagePath +user+ ".png" 
+			}
+			else if(options.imageUrl != null){
+				skinImage.src = options.imageUrl; 	
+			}
+			else{
+				skinImage.src = "https://s3.amazonaws.com/MinecraftSkins/" +user+ ".png";
+			}
 			skinImage.onload = function(){
 				skinLoaded = true;
 				_ctx.scale(-1, 1);
@@ -188,9 +197,11 @@
             	head: false,
 				cape: false,
 				capeOverride: $(this).attr('data-cape'),
+				imagePath: null,
 				className: "",
 				default_skin: "char.png",
-                skin: $(this).attr('data-player')   
+                skin: $(this).attr('data-player'),  
+                imageUrl: $(this).attr('data-url')  
             };
      
             var sp = new SkinPreview();
