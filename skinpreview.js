@@ -115,7 +115,10 @@
 				}	
 				self.drawSkinFront();
 			}
-			this.getCape(user);
+
+			if(options.cape && !options.head && !options.capeOverride){
+				this.getCape(user);
+			}
 		}	
 
 		this.getCape = function(user){
@@ -185,6 +188,7 @@
             	scale: 4,
             	head: false,
 				cape: false,
+				capeOverride: $(this).attr('data-cape'),
 				className: "",
 				default_skin: "char.png",
                 skin: $(this).attr('data-player')   
