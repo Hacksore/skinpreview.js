@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>SkinPreview</title>
+	<style>
+	
+		#wrapper{
+			width: 1000px;
+			margin: 24px auto 48px auto;
+
+		}
+
+		.skins{
+			display: inline-block;
+			margin: 6px 10px 6px 10px;
+		}
+			
+		.cape-skins{
+			display: inline-block;
+			margin: 6px 10px 6px 10px;
+		}
+		.scale-skins{
+			display: inline-block;
+			margin: 6px 10px 6px 10px;
+		}
+		.head-skins{
+			display: inline-block;
+			margin: 6px 10px 6px 10px;
+		}
+		
+		.info .header{
+			padding: 0px 0px 4px 6px;
+			margin: 0px 0px 14px 0px;
+			color: #fff;
+			background: #303030;
+			-webkit-border-top-left-radius: 3px;
+			-webkit-border-top-right-radius: 3px;
+			-moz-border-radius-topleft: 3px;
+			-moz-border-radius-topright: 3px;
+			border-top-left-radius: 3px;
+			border-top-right-radius: 3px;
+			border: 1px solid #303030;			
+		}
+
+		.info{
+			max-width: 520px;
+			background: #f7f7f7;
+			max-height: 340px;
+			padding: 0px 0px 6px 0px;
+			margin: 16px auto 16px auto;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;			
+			border: 1px solid #9b9b9b;
+			text-align: center;
+		}
+		.clearfix{ clear: both; }
+	</style>
+</head>
+
+<body>
+
+
+<div id="wrapper">
+	
+	<div class="info">
+		<h1 class="header">Multiple</h1>
+		<div class="skins" data-player="Hacksore"></div>
+		<div class="skins" data-player="Technoash" data-cape="false"></div>
+		<div class="skins" data-player="Notch"></div>
+		<div class="skins" data-player="jeb_"></div>
+		<div class="skins" data-player="mollstam"></div>
+
+		<div class="clearfix"></div>
+	</div>
+	
+	
+	
+	
+	<div class="info">
+		<h1 class="header">Scaling</h1>
+		<div class="scale-skins scale-1" data-player="Hacksore"></div>
+		<div class="scale-skins scale-2" data-player="Hacksore"></div>
+		<div class="scale-skins scale-3" data-player="_FearGRump_"></div>
+		<div class="scale-skins scale-4" data-player="_FearGRump_"></div>
+		<div class="scale-skins scale-5" data-player="jeb_"></div>
+		<div class="scale-skins scale-6" data-player="jeb_"></div>
+	</div>
+
+	
+	<div class="info">
+		<h1 class="header">Heads</h1>
+		<div class="head-skins" data-player="Hacksore"></div>
+		<div class="head-skins" data-player="Technoash"></div>
+		<div class="head-skins" data-player="jeb_"></div>
+		<div class="head-skins" data-player="Notch"></div>
+	</div>	
+
+	
+	
+	<div class="info">
+		<h1 class="header">Capes</h1>
+		<div class="cape-skins" data-player="Hacksore"></div>
+		<div class="cape-skins" data-player="Hack"></div>
+		<div class="cape-skins" data-player="SethBling"></div>
+		<div class="cape-skins" data-player="Technoash" data-cape="false"></div>
+
+		<div class="clearfix"></div>
+	</div>
+
+	
+	
+</div>
+
+</body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="skinpreview.js"></script>
+<script>
+$(window).bind("load", function() {
+	
+	
+	$(".skins").skinPreview();
+	
+	$(".scale-1").skinPreview({scale: 1});
+	$(".scale-2").skinPreview({scale: 2});
+	$(".scale-3").skinPreview({scale: 3});
+	$(".scale-4").skinPreview({scale: 4});
+	$(".scale-5").skinPreview({scale: 5});
+	$(".scale-6").skinPreview({scale: 6});
+
+	$(".head-skins").skinPreview({scale: 12, head: true});
+
+	$(".cape-skins").skinPreview({scale: 6, cape: true});
+
+	
+});
+</script>
+
+
+</html>
