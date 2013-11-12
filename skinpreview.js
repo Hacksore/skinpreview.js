@@ -6,7 +6,7 @@
 (function ($) {
     'use strict';
 
-	function SkinPreview(options) {
+	function SkinPreview() {
 		var self = this;
 		var s = 1;
 		var skinImage = new Image();
@@ -21,10 +21,9 @@
 		var options = {};
 		_can.width = 64;
 		_can.height = 32;
-		
-
-		this.user = "";		
+			
 		this.cape = new Image();
+
 		this.drawHead = function(){
 			context.imageSmoothingEnabled = false;
 			context.mozImageSmoothingEnabled = false;
@@ -155,9 +154,10 @@
 		
 		canvas.oncontextmenu = function(e){	
 			if(options.head){ return; }
-			if(!options.cape){ return; }
-			e.preventDefault();		
+			if(!options.cape){ return; }		
 			if(!capeloaded){ return; }
+
+			e.preventDefault();
 			capeEnabled = !capeEnabled;
 			self.drawSkinBack();
 			self.drawCape();	
@@ -169,8 +169,7 @@
 			capeEnabled = options.cape;
 
 			errorImage.src = options.default_skin;
-			errorImage.onload = function() {
-			}			
+			errorImage.onload = function() {}			
 			
 			this.setScale(options.scale);
 			this.setSkin(options.skin);
@@ -198,6 +197,5 @@
             sp.init(this, $.extend(defaults, options));
         });
     };
-		
-	
+			
 } (window.jQuery));
