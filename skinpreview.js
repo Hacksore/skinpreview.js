@@ -130,7 +130,7 @@
 		}	
 
 		this.getCape = function(user){
-			this.cape.src = capePath != null ? capePath +user+ ".png" : "https://s3.amazonaws.com/MinecraftCloaks/" + user + ".png";
+			this.cape.src = options.capePath != null ? options.capePath +user+ ".png" : "https://s3.amazonaws.com/MinecraftCloaks/" + user + ".png";
 			this.cape.onload = function(){
 				capeloaded = true;
 				
