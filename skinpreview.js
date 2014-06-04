@@ -4,7 +4,7 @@
 */
 
 (function ($) {
-    'use strict';
+	'use strict';
 
 	function SkinPreview() {
 		var self = this;
@@ -113,6 +113,7 @@
 					canvas.width = 8 * s;
 					canvas.height = 8 * s;
 					self.drawHead();
+					self.drawHat();
 					return;
 				}	
 				self.drawSkinFront();
@@ -128,6 +129,7 @@
 					canvas.width = 8 * s;
 					canvas.height = 8 * s;
 					self.drawHead();
+					self.drawHat();
 					return;
 				}	
 				self.drawSkinFront();
@@ -199,24 +201,24 @@
 		
 	}
 
-    $.fn.skinPreview = function (options) {
+	$.fn.skinPreview = function (options) {
 		this.each(function () {
-            var defaults = {
-            	scale: 4,
-            	head: false,
+			var defaults = {
+				scale: 4,
+				head: false,
 				cape: false,
 				capePath: null,
 				capeOverride: $(this).attr('data-cape'),
 				imagePath: null,
 				className: "",
 				default_skin: "char.png",
-                skin: $(this).attr('data-player'),  
-                imageUrl: $(this).attr('data-url')  
-            };
-     
-            var sp = new SkinPreview();
-            sp.init(this, $.extend(defaults, options));
-        });
-    };
+				skin: $(this).attr('data-player'),  
+				imageUrl: $(this).attr('data-url')  
+			};
+	 
+			var sp = new SkinPreview();
+			sp.init(this, $.extend(defaults, options));
+		});
+	};
 			
 } (window.jQuery));
