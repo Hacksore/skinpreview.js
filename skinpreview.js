@@ -19,7 +19,7 @@
 		var _can = document.createElement('canvas');
 		var _ctx = _can.getContext("2d");
 		var options = {};
-		_can.width = 64;a
+		_can.width = 64;
 		_can.height = 32;
 			
 		this.cape = new Image();
@@ -28,20 +28,19 @@
 			context.imageSmoothingEnabled = false;
 			context.mozImageSmoothingEnabled = false;
 			context.oImageSmoothingEnabled = false;
-			context.webkitImageSmoothingEnabled = false;
 			context.clearRect(0, 0, canvas.width, canvas.height);
 			context.drawImage(skinImage, 8, 8, 8, 8, 0, 0, s*8, s*8);
 			
 		}
 		this.drawHat = function(){
+			if(!options.showHat){ return; }
 			context.imageSmoothingEnabled = false;
 			context.mozImageSmoothingEnabled = false;
 			context.oImageSmoothingEnabled = false;
-			context.webkitImageSmoothingEnabled = false;
-			context.clearRect(0, 0, canvas.width, canvas.height);
+
 			context.drawImage(skinImage, 40, 8, 8, 8, 0, 0, s*8, s*8);
-			
 		}
+
 		this.drawSkinFront = function(){	
 			var parts = {
 				head: [skinImage, 8, 8, 8, 8, 4, 0, 8, 8],
@@ -73,7 +72,6 @@
 			context.imageSmoothingEnabled = false;
 			context.mozImageSmoothingEnabled = false;
 			context.oImageSmoothingEnabled = false;
-			context.webkitImageSmoothingEnabled = false;
 			context.clearRect(0, 0, canvas.width, canvas.height);
 
 			//draw parts
@@ -93,7 +91,7 @@
 		this.setSkin = function(user){	
 			capeloaded = false;
 			skinImage = new Image();
-		
+	
 			if(options.imagePath != null){
 				skinImage.src = options.imagePath +user+ ".png" 
 			}
@@ -101,7 +99,7 @@
 				skinImage.src = options.imageUrl; 	
 			}
 			else{
-				skinImage.src = "https://s3.amazonaws.com/MinecraftSkins/" +user+ ".png";
+				skinImage.src = "https://skins.minecraft.net/MinecraftSkins/" +user+ ".png";
 			}
 			skinImage.onload = function(){
 				skinLoaded = true;
@@ -141,7 +139,7 @@
 		}	
 
 		this.getCape = function(user){
-			this.cape.src = options.capePath != null ? options.capePath +user+ ".png" : "https://s3.amazonaws.com/MinecraftCloaks/" + user + ".png";
+			this.cape.src = options.capePath != null ? options.capePath +user+ ".png" : "https://skins.minecraft.net/MinecraftCloaks/" + user + ".png";
 			this.cape.onload = function(){
 				capeloaded = true;
 				
@@ -206,6 +204,7 @@
 			var defaults = {
 				scale: 4,
 				head: false,
+				showHat: true,
 				cape: false,
 				capePath: null,
 				capeOverride: $(this).attr('data-cape'),
