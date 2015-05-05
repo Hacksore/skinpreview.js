@@ -4,7 +4,7 @@
 */
 
 (function ($) {
-    'use strict';
+	'use strict';
 
 	function SkinPreview() {
 		var self = this;
@@ -19,7 +19,7 @@
 		var _can = document.createElement('canvas');
 		var _ctx = _can.getContext("2d");
 		var options = {};
-		_can.width = 64;
+		_can.width = 64;a
 		_can.height = 32;
 			
 		this.cape = new Image();
@@ -30,7 +30,16 @@
 			context.oImageSmoothingEnabled = false;
 			context.webkitImageSmoothingEnabled = false;
 			context.clearRect(0, 0, canvas.width, canvas.height);
-			context.drawImage(skinImage, 8, 8, 8, 8, 0, 0, s*8, s*8);		
+			context.drawImage(skinImage, 8, 8, 8, 8, 0, 0, s*8, s*8);
+			
+		}
+		this.drawHat = function(){
+			context.imageSmoothingEnabled = false;
+			context.mozImageSmoothingEnabled = false;
+			context.oImageSmoothingEnabled = false;
+			context.webkitImageSmoothingEnabled = false;
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			context.drawImage(skinImage, 40, 8, 8, 8, 0, 0, s*8, s*8);
 			
 		}
 		this.drawSkinFront = function(){	
@@ -104,6 +113,7 @@
 					canvas.width = 8 * s;
 					canvas.height = 8 * s;
 					self.drawHead();
+					self.drawHat();
 					return;
 				}	
 				self.drawSkinFront();
@@ -119,6 +129,7 @@
 					canvas.width = 8 * s;
 					canvas.height = 8 * s;
 					self.drawHead();
+					self.drawHat();
 					return;
 				}	
 				self.drawSkinFront();
@@ -190,24 +201,24 @@
 		
 	}
 
-    $.fn.skinPreview = function (options) {
+	$.fn.skinPreview = function (options) {
 		this.each(function () {
-            var defaults = {
-            	scale: 4,
-            	head: false,
+			var defaults = {
+				scale: 4,
+				head: false,
 				cape: false,
 				capePath: null,
 				capeOverride: $(this).attr('data-cape'),
 				imagePath: null,
 				className: "",
 				default_skin: "char.png",
-                skin: $(this).attr('data-player'),  
-                imageUrl: $(this).attr('data-url')  
-            };
-     
-            var sp = new SkinPreview();
-            sp.init(this, $.extend(defaults, options));
-        });
-    };
+				skin: $(this).attr('data-player'),  
+				imageUrl: $(this).attr('data-url')  
+			};
+	 
+			var sp = new SkinPreview();
+			sp.init(this, $.extend(defaults, options));
+		});
+	};
 			
 } (window.jQuery));
